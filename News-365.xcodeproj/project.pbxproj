@@ -19,24 +19,6 @@
 		E2CE9F262A950E9D00A320E9 /* News_365Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F252A950E9D00A320E9 /* News_365Tests.swift */; };
 		E2CE9F302A950E9D00A320E9 /* News_365UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F2F2A950E9D00A320E9 /* News_365UITests.swift */; };
 		E2CE9F322A950E9D00A320E9 /* News_365UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F312A950E9D00A320E9 /* News_365UITestsLaunchTests.swift */; };
-		E2CE9F652A953CAB00A320E9 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F522A953CAA00A320E9 /* CustomView.swift */; };
-		E2CE9F662A953CAB00A320E9 /* CustomView in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F532A953CAA00A320E9 /* CustomView */; };
-		E2CE9F672A953CAB00A320E9 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F542A953CAA00A320E9 /* DateTextField.swift */; };
-		E2CE9F682A953CAB00A320E9 /* Buttons in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F552A953CAA00A320E9 /* Buttons */; };
-		E2CE9F692A953CAB00A320E9 /* HelperMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F562A953CAA00A320E9 /* HelperMethods.swift */; };
-		E2CE9F6A2A953CAB00A320E9 /* CustomCollectionViewCell in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F572A953CAA00A320E9 /* CustomCollectionViewCell */; };
-		E2CE9F6B2A953CAB00A320E9 /* ActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F582A953CAA00A320E9 /* ActionSheet.swift */; };
-		E2CE9F6C2A953CAB00A320E9 /* UIBarButtonItem+Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F592A953CAA00A320E9 /* UIBarButtonItem+Badge.swift */; };
-		E2CE9F6D2A953CAB00A320E9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F5A2A953CAA00A320E9 /* Extensions.swift */; };
-		E2CE9F6E2A953CAB00A320E9 /* TextFields in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F5B2A953CAA00A320E9 /* TextFields */; };
-		E2CE9F6F2A953CAB00A320E9 /* TimeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F5C2A953CAA00A320E9 /* TimeTextField.swift */; };
-		E2CE9F702A953CAB00A320E9 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F5D2A953CAA00A320E9 /* AlertService.swift */; };
-		E2CE9F712A953CAB00A320E9 /* view in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F5E2A953CAA00A320E9 /* view */; };
-		E2CE9F732A953CAB00A320E9 /* Bar+CurvedCharts in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F602A953CAA00A320E9 /* Bar+CurvedCharts */; };
-		E2CE9F742A953CAB00A320E9 /* Labels in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F612A953CAA00A320E9 /* Labels */; };
-		E2CE9F752A953CAB00A320E9 /* CustomImageView in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F622A953CAB00A320E9 /* CustomImageView */; };
-		E2CE9F762A953CAB00A320E9 /* SideMenu in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F632A953CAB00A320E9 /* SideMenu */; };
-		E2CE9F772A953CAB00A320E9 /* TextViews in Sources */ = {isa = PBXBuildFile; fileRef = E2CE9F642A953CAB00A320E9 /* TextViews */; };
 		F4E591CA9AEB7513F5423B60 /* Pods_News_365.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246F8FE958D8D86A939ABD6E /* Pods_News_365.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,24 +63,6 @@
 		E2CE9F2B2A950E9D00A320E9 /* News-365UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "News-365UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2CE9F2F2A950E9D00A320E9 /* News_365UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_365UITests.swift; sourceTree = "<group>"; };
 		E2CE9F312A950E9D00A320E9 /* News_365UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News_365UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E2CE9F522A953CAA00A320E9 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
-		E2CE9F532A953CAA00A320E9 /* CustomView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CustomView; sourceTree = "<group>"; };
-		E2CE9F542A953CAA00A320E9 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
-		E2CE9F552A953CAA00A320E9 /* Buttons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Buttons; sourceTree = "<group>"; };
-		E2CE9F562A953CAA00A320E9 /* HelperMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperMethods.swift; sourceTree = "<group>"; };
-		E2CE9F572A953CAA00A320E9 /* CustomCollectionViewCell */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CustomCollectionViewCell; sourceTree = "<group>"; };
-		E2CE9F582A953CAA00A320E9 /* ActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheet.swift; sourceTree = "<group>"; };
-		E2CE9F592A953CAA00A320E9 /* UIBarButtonItem+Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Badge.swift"; sourceTree = "<group>"; };
-		E2CE9F5A2A953CAA00A320E9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E2CE9F5B2A953CAA00A320E9 /* TextFields */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TextFields; sourceTree = "<group>"; };
-		E2CE9F5C2A953CAA00A320E9 /* TimeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeTextField.swift; sourceTree = "<group>"; };
-		E2CE9F5D2A953CAA00A320E9 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
-		E2CE9F5E2A953CAA00A320E9 /* view */ = {isa = PBXFileReference; lastKnownFileType = folder; path = view; sourceTree = "<group>"; };
-		E2CE9F602A953CAA00A320E9 /* Bar+CurvedCharts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Bar+CurvedCharts"; sourceTree = "<group>"; };
-		E2CE9F612A953CAA00A320E9 /* Labels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Labels; sourceTree = "<group>"; };
-		E2CE9F622A953CAB00A320E9 /* CustomImageView */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CustomImageView; sourceTree = "<group>"; };
-		E2CE9F632A953CAB00A320E9 /* SideMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SideMenu; sourceTree = "<group>"; };
-		E2CE9F642A953CAB00A320E9 /* TextViews */ = {isa = PBXFileReference; lastKnownFileType = folder; path = TextViews; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +141,7 @@
 		E2CE9F0A2A950E9900A320E9 /* News-365 */ = {
 			isa = PBXGroup;
 			children = (
+				E2CE9F1C2A950E9C00A320E9 /* Info.plist */,
 				E2CE9F452A952A8F00A320E9 /* Domain */,
 				E2CE9F442A952A2100A320E9 /* Data */,
 				E2CE9F3F2A9529BA00A320E9 /* Presentation */,
@@ -206,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				E2CE9F512A953BBC00A320E9 /* Configuration */,
-				E2CE9F502A953B9E00A320E9 /* Extensions */,
 				E2CE9F4E2A953B4900A320E9 /* Resources */,
 				E2CE9F4D2A953B2100A320E9 /* Core */,
 			);
@@ -351,35 +315,9 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		E2CE9F502A953B9E00A320E9 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				E2CE9F582A953CAA00A320E9 /* ActionSheet.swift */,
-				E2CE9F5D2A953CAA00A320E9 /* AlertService.swift */,
-				E2CE9F602A953CAA00A320E9 /* Bar+CurvedCharts */,
-				E2CE9F552A953CAA00A320E9 /* Buttons */,
-				E2CE9F572A953CAA00A320E9 /* CustomCollectionViewCell */,
-				E2CE9F622A953CAB00A320E9 /* CustomImageView */,
-				E2CE9F532A953CAA00A320E9 /* CustomView */,
-				E2CE9F522A953CAA00A320E9 /* CustomView.swift */,
-				E2CE9F542A953CAA00A320E9 /* DateTextField.swift */,
-				E2CE9F5A2A953CAA00A320E9 /* Extensions.swift */,
-				E2CE9F562A953CAA00A320E9 /* HelperMethods.swift */,
-				E2CE9F612A953CAA00A320E9 /* Labels */,
-				E2CE9F632A953CAB00A320E9 /* SideMenu */,
-				E2CE9F5B2A953CAA00A320E9 /* TextFields */,
-				E2CE9F642A953CAB00A320E9 /* TextViews */,
-				E2CE9F5C2A953CAA00A320E9 /* TimeTextField.swift */,
-				E2CE9F592A953CAA00A320E9 /* UIBarButtonItem+Badge.swift */,
-				E2CE9F5E2A953CAA00A320E9 /* view */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		E2CE9F512A953BBC00A320E9 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				E2CE9F1C2A950E9C00A320E9 /* Info.plist */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -623,24 +561,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2CE9F652A953CAB00A320E9 /* CustomView.swift in Sources */,
-				E2CE9F662A953CAB00A320E9 /* CustomView in Sources */,
-				E2CE9F672A953CAB00A320E9 /* DateTextField.swift in Sources */,
-				E2CE9F682A953CAB00A320E9 /* Buttons in Sources */,
-				E2CE9F692A953CAB00A320E9 /* HelperMethods.swift in Sources */,
-				E2CE9F6A2A953CAB00A320E9 /* CustomCollectionViewCell in Sources */,
-				E2CE9F6B2A953CAB00A320E9 /* ActionSheet.swift in Sources */,
-				E2CE9F6C2A953CAB00A320E9 /* UIBarButtonItem+Badge.swift in Sources */,
-				E2CE9F6D2A953CAB00A320E9 /* Extensions.swift in Sources */,
-				E2CE9F6E2A953CAB00A320E9 /* TextFields in Sources */,
-				E2CE9F6F2A953CAB00A320E9 /* TimeTextField.swift in Sources */,
-				E2CE9F702A953CAB00A320E9 /* AlertService.swift in Sources */,
-				E2CE9F712A953CAB00A320E9 /* view in Sources */,
-				E2CE9F732A953CAB00A320E9 /* Bar+CurvedCharts in Sources */,
-				E2CE9F742A953CAB00A320E9 /* Labels in Sources */,
-				E2CE9F752A953CAB00A320E9 /* CustomImageView in Sources */,
-				E2CE9F762A953CAB00A320E9 /* SideMenu in Sources */,
-				E2CE9F772A953CAB00A320E9 /* TextViews in Sources */,
 				E2CE9F102A950E9900A320E9 /* ViewController.swift in Sources */,
 				E2CE9F0C2A950E9900A320E9 /* AppDelegate.swift in Sources */,
 				E2CE9F0E2A950E9900A320E9 /* SceneDelegate.swift in Sources */,
