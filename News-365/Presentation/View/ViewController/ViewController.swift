@@ -8,15 +8,15 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     
+    var remoteViewModel = RemoteNewsViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         request()
     }
-    func request (){
-        NetworkManager.shared.request(endpoint: .topHeadlines(category: "general", country: "EG"), responseClass: News.self) { result in
+    func request(){
+        remoteViewModel.getNews(category: "general") { result in
             switch result {
             case .success(let response):
                 print (response?.articles?.first?.title ?? "no data")
@@ -26,4 +26,3 @@ class ViewController: UIViewController {
         }
     }
 }
-
