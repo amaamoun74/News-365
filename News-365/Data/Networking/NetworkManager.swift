@@ -7,12 +7,15 @@
 
 import Foundation
 import Alamofire
-class NetworkManager {
-    static let shared = NetworkManager()
+
+protocol NetworkManagerProtocol {
+    func request<T: Decodable>(endpoint: Endpoint, responseClass: T.Type, completion: @escaping (Result<T?, ServiceError>) -> Void)
+}
+
+class NetworkManager: NetworkManagerProtocol {
+ 
     
-    private init() {}
-    
-    func request<T: Decodable>(endpoint: Endpoint, completion: @escaping (Result<T, ServiceError>) -> Void) {
+    func request<T: Decodable>(endpoint: Endpoint, responseClass: T.Type, completion: @escaping (Result<T?, ServiceError>) -> Void) {
         guard let url = URL(string: endpoint.path) else {
             completion(.failure(.networkFailure))
             return
@@ -38,7 +41,7 @@ class NetworkManager {
                         completion(.failure(.invalidResponse))
                     }
                 } else {
-                    completion(.failure(.decodingError))
+                    completion(.failure(.networkFailure))
                 }
             }
         }
