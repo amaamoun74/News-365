@@ -6,6 +6,7 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,22 +37,35 @@
                                         <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="shadowColor" systemColor="systemGray4Color"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1Yt-Xf-kDg">
-                                        <rect key="frame" x="0.0" y="31.333333333333329" width="393" height="146.33333333333337"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d1e-Dz-YBh">
+                                        <rect key="frame" x="0.0" y="31.333333333333343" width="393" height="146.33333333333334"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="U83-yd-Zkm">
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Lo-Qz-6iC">
                                             <size key="itemSize" width="128" height="128"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
-                                        <cells/>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="m7a-7b-XtV">
+                                                <rect key="frame" x="0.0" y="9.3333333333333339" width="128" height="127.99999999999997"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oGA-VL-MZK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="127.99999999999997"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
                                     </collectionView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="d1e-Dz-YBh" firstAttribute="top" secondItem="zND-iR-Hhd" secondAttribute="bottom" constant="4.0000000000000107" id="Hh5-JR-3eY"/>
+                                    <constraint firstItem="d1e-Dz-YBh" firstAttribute="leading" secondItem="ev2-Kv-GlF" secondAttribute="leading" id="Xcg-yC-AsZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="d1e-Dz-YBh" secondAttribute="trailing" id="mbv-Ca-GS1"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="q2O-xd-yGI" userLabel="table stack view">
-                                <rect key="frame" x="0.0" y="296.66666666666669" width="393" height="532.66666666666652"/>
+                                <rect key="frame" x="0.0" y="296.66666666666669" width="393" height="532.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gax-bg-rnM">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="27.333333333333332"/>
@@ -63,7 +77,7 @@
                                         <color key="shadowColor" systemColor="systemGray4Color"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dZG-g8-lM6">
-                                        <rect key="frame" x="0.0" y="31.333333333333343" width="393" height="501.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="31.333333333333314" width="393" height="500.99999999999994"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -77,6 +91,7 @@
                             <constraint firstItem="ev2-Kv-GlF" firstAttribute="top" secondItem="usK-gK-aAZ" secondAttribute="bottom" id="O93-NM-pl8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="usK-gK-aAZ" secondAttribute="trailing" constant="8" id="OFr-iA-GmK"/>
                             <constraint firstItem="q2O-xd-yGI" firstAttribute="top" secondItem="ev2-Kv-GlF" secondAttribute="bottom" constant="4" id="Pqh-o4-hg1"/>
+                            <constraint firstItem="ev2-Kv-GlF" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.25" id="Wnp-Rw-qis"/>
                             <constraint firstItem="usK-gK-aAZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="aow-WM-9h7"/>
                             <constraint firstItem="q2O-xd-yGI" firstAttribute="leading" secondItem="ev2-Kv-GlF" secondAttribute="leading" id="ba7-3F-SNI"/>
                             <constraint firstItem="usK-gK-aAZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="jfc-9l-kRw"/>
@@ -96,6 +111,7 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="home" largeTitleDisplayMode="always" id="Sdw-ia-Pua"/>
                     <connections>
+                        <outlet property="newsCategory" destination="d1e-Dz-YBh" id="u26-2r-hqN"/>
                         <outlet property="newsTable" destination="dZG-g8-lM6" id="kVV-Wz-vsF"/>
                     </connections>
                 </viewController>
