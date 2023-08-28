@@ -10,7 +10,7 @@ import CoreData
 class LocalDataManager: IDataManager {
     
     //MARK: Fetch
-    func fetch(searchedTitle: String, appDelegate : AppDelegate) -> [Article]? {
+    func fetch(searchedTitle: String, appDelegate : AppDelegate) -> [Article] {
         var articalArray: [Article] = []
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: ENTITY_NAME)
@@ -28,7 +28,6 @@ class LocalDataManager: IDataManager {
                 let state = item.value(forKey: "artical_state") as? Bool
                 let articalItem = Article(author: author , title: title , description: description, urlToImage: image , publishedAt: publishedAt, product_state: state)
                 
-                
                 articalArray.append(articalItem)
             }
             print(articalArray.count)
@@ -37,8 +36,6 @@ class LocalDataManager: IDataManager {
         }
         return articalArray
     }
-    
-    
     
     //MARK: Delete
     func delete(appDelegate: AppDelegate, title: String , complition : (Error?) -> Void){
