@@ -3,38 +3,70 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="246" id="KGk-i7-Jjw" customClass="NewsTableViewCell" customModule="News_365" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="472" height="246"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="217" id="KGk-i7-Jjw" customClass="NewsTableViewCell" customModule="News_365" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="473" height="217"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="472" height="246"/>
+                <rect key="frame" x="0.0" y="0.0" width="473" height="217"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tSM-kl-hNd">
-                        <rect key="frame" x="5" y="5" width="188.66666666666666" height="236"/>
+                        <rect key="frame" x="5" y="5" width="189.33333333333334" height="207"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnM-n8-Rah">
-                        <rect key="frame" x="201.66666666666666" y="5" width="265.33333333333337" height="59"/>
+                        <rect key="frame" x="202.33333333333334" y="5" width="265.66666666666663" height="51.666666666666671"/>
                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZM-tb-keL">
-                        <rect key="frame" x="201.66666666666666" y="72" width="265.33333333333337" height="169"/>
+                        <rect key="frame" x="202.33333333333334" y="64.666666666666671" width="265.66666666666663" height="147.33333333333331"/>
                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Erb-l3-5mc">
+                        <rect key="frame" x="407" y="151" width="53" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="85" id="tPk-xe-QCr"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="tinted" cornerStyle="large">
+                            <imageReference key="image" image="bookmark" catalog="system" symbolScale="large" renderingMode="hierarchical">
+                                <hierarchicalColors>
+                                    <color systemColor="labelColor"/>
+                                    <color systemColor="secondaryLabelColor"/>
+                                    <color systemColor="tertiaryLabelColor"/>
+                                </hierarchicalColors>
+                            </imageReference>
+                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="bold"/>
+                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </buttonConfiguration>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="tPk-xe-QCr"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <action selector="saveNewsBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cUo-yK-b8u"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Erb-l3-5mc" firstAttribute="width" secondItem="bZM-tb-keL" secondAttribute="width" multiplier="0.2" id="9AO-bz-bgs"/>
                     <constraint firstItem="bZM-tb-keL" firstAttribute="leading" secondItem="vnM-n8-Rah" secondAttribute="leading" id="9wW-bN-bQr"/>
+                    <constraint firstItem="Erb-l3-5mc" firstAttribute="trailing" secondItem="bZM-tb-keL" secondAttribute="trailing" constant="-8" id="AfP-kR-UXZ"/>
                     <constraint firstItem="vnM-n8-Rah" firstAttribute="top" secondItem="tSM-kl-hNd" secondAttribute="top" id="BAo-WC-yc5"/>
+                    <constraint firstItem="Erb-l3-5mc" firstAttribute="height" secondItem="bZM-tb-keL" secondAttribute="width" multiplier="0.2" id="I5E-ma-IKk"/>
                     <constraint firstItem="tSM-kl-hNd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="K2H-i9-JMa"/>
                     <constraint firstItem="bZM-tb-keL" firstAttribute="bottom" secondItem="tSM-kl-hNd" secondAttribute="bottom" id="KBf-jU-Cvj"/>
                     <constraint firstAttribute="bottom" secondItem="tSM-kl-hNd" secondAttribute="bottom" constant="5" id="L6q-eq-Bc2"/>
@@ -45,15 +77,29 @@
                     <constraint firstItem="vnM-n8-Rah" firstAttribute="leading" secondItem="tSM-kl-hNd" secondAttribute="trailing" constant="8" id="niJ-79-uoI"/>
                     <constraint firstItem="tSM-kl-hNd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="pIb-cO-5BU"/>
                     <constraint firstItem="tSM-kl-hNd" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.4" id="t7B-jH-zGu"/>
+                    <constraint firstItem="Erb-l3-5mc" firstAttribute="bottom" secondItem="bZM-tb-keL" secondAttribute="bottom" constant="-8" id="zrt-u8-7U3"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="btnSave" destination="Erb-l3-5mc" id="nGU-xg-cJS"/>
                 <outlet property="imgNews" destination="tSM-kl-hNd" id="UeF-f3-7gl"/>
                 <outlet property="lblNewsDescription" destination="bZM-tb-keL" id="uyi-UK-kK7"/>
                 <outlet property="lblNewsTitle" destination="vnM-n8-Rah" id="bG2-ly-vbx"/>
             </connections>
-            <point key="canvasLocation" x="187.78625954198472" y="59.859154929577471"/>
+            <point key="canvasLocation" x="188.54961832061068" y="29.929577464788736"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="bookmark" catalog="system" width="110" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

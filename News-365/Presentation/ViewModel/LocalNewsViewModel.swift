@@ -7,7 +7,7 @@
 
 import Foundation
 class LocalNewsViewModel {
-    let localUseCase = LocalUseCase()
+    private let localUseCase = LocalUseCase()
     /*var bindingNews : ((News?, ServiceError)->()) = {_,_ in }
      var newsResponse : News?{
      didSet{

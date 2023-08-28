@@ -14,7 +14,7 @@ class LocalDataManager: IDataManager {
         var articalArray: [Article] = []
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: ENTITY_NAME)
-        fetchRequest.predicate = NSPredicate(format: "title = \(searchedTitle)")
+      //  fetchRequest.predicate = NSPredicate(format: "title == %@", searchedTitle)
         
         do {
             let fetchedNewsArray = try managedContext.fetch(fetchRequest)
@@ -42,7 +42,8 @@ class LocalDataManager: IDataManager {
         let managedContext = appDelegate.persistentContainer.viewContext
         do{
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ENTITY_NAME)
-            fetchRequest.predicate = NSPredicate(format: "title = \(title)")
+            fetchRequest.predicate = NSPredicate(format: "title == %@", title)
+            
             let product = try managedContext.fetch(fetchRequest)
             
             managedContext.delete((product as! [NSManagedObject]).first!)
@@ -85,7 +86,9 @@ class LocalDataManager: IDataManager {
         var state : Bool = false
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: ENTITY_NAME)
-        fetchRequest.predicate = NSPredicate(format: "title = \(articalTitle)")
+
+        fetchRequest.predicate = NSPredicate(format: "title == %@", articalTitle)
+        
         do{
             let fetchedLeagueArray = try managedContext.fetch(fetchRequest)
             for item in (fetchedLeagueArray)

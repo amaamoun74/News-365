@@ -128,11 +128,14 @@
         <!--Saved-->
         <scene sceneID="VIB-uJ-rvA">
             <objects>
-                <viewController id="hVW-ZI-A6L" sceneMemberID="viewController">
+                <viewController id="hVW-ZI-A6L" customClass="SavedNewsViewController" customModule="News_365" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="C8i-3g-c1g">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="businessIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Mgk-c5-aga">
+                                <rect key="frame" x="55" y="362.66666666666669" width="283" height="271.00000000000006"/>
+                            </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lqD-zi-2gG">
                                 <rect key="frame" x="8" y="227" width="377" height="542"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -153,9 +156,13 @@
                             <constraint firstItem="5Cs-MC-Xwe" firstAttribute="bottom" secondItem="lqD-zi-2gG" secondAttribute="bottom" id="7OX-Oe-vQ1"/>
                             <constraint firstItem="lqD-zi-2gG" firstAttribute="centerY" secondItem="5Cs-MC-Xwe" secondAttribute="centerY" id="8k6-e4-8Sl"/>
                             <constraint firstItem="h0a-YC-jjr" firstAttribute="top" secondItem="5Cs-MC-Xwe" secondAttribute="top" constant="8" id="BqS-ud-YnZ"/>
+                            <constraint firstItem="Mgk-c5-aga" firstAttribute="height" secondItem="lqD-zi-2gG" secondAttribute="height" multiplier="0.5" id="TyP-0H-wGE"/>
                             <constraint firstItem="5Cs-MC-Xwe" firstAttribute="trailing" secondItem="h0a-YC-jjr" secondAttribute="trailing" constant="8" id="XGO-6Y-I2E"/>
                             <constraint firstItem="lqD-zi-2gG" firstAttribute="top" secondItem="h0a-YC-jjr" secondAttribute="bottom" constant="8" id="Y8F-qJ-mja"/>
                             <constraint firstItem="lqD-zi-2gG" firstAttribute="width" secondItem="C8i-3g-c1g" secondAttribute="width" constant="-16" id="gzw-gS-ium"/>
+                            <constraint firstItem="Mgk-c5-aga" firstAttribute="centerX" secondItem="lqD-zi-2gG" secondAttribute="centerX" id="kfl-JC-zif"/>
+                            <constraint firstItem="Mgk-c5-aga" firstAttribute="width" secondItem="lqD-zi-2gG" secondAttribute="width" multiplier="0.75" id="pvM-Sb-kLU"/>
+                            <constraint firstItem="Mgk-c5-aga" firstAttribute="centerY" secondItem="lqD-zi-2gG" secondAttribute="centerY" id="q7k-EM-Tjj"/>
                             <constraint firstItem="lqD-zi-2gG" firstAttribute="centerX" secondItem="5Cs-MC-Xwe" secondAttribute="centerX" id="vHe-C1-1Dv"/>
                         </constraints>
                         <variation key="default">
@@ -166,6 +173,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Saved" id="wAQ-Dz-XfP"/>
+                    <connections>
+                        <outlet property="savedNewsTable" destination="lqD-zi-2gG" id="Irn-Da-1xT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQG-Pu-PFF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -364,6 +374,7 @@
     </scenes>
     <resources>
         <image name="bookmark.fill" catalog="system" width="110" height="128"/>
+        <image name="businessIcon" width="512" height="512"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
         <systemColor name="labelColor">
