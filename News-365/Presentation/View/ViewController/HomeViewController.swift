@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     private var tableDataSources : NewsDataSources?
     private var collectionDataSource : CategoryDataSource?
     private var categoryList: [Category]?
+    private let refreshController = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,7 +26,7 @@ class HomeViewController: UIViewController {
                         Category(CategoryName: "science" , cattegoryImage: nil),
                         Category(CategoryName: "technology" , cattegoryImage: "techIcon"),
                         Category(CategoryName: "sports" , cattegoryImage: "sportIcon")]
-        
+       setRefreshController()
         registerCell()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,13 +49,15 @@ class HomeViewController: UIViewController {
 
 /// request news and send result to data source for displying it
 extension HomeViewController {
-    func requestNewsList(){
+    @objc func requestNewsList(){
         remoteViewModel.getNews(category: "general") { [unowned self] result in
             switch result {
             case .success(let response):
+                refreshController.endRefreshing()
                 print (response?.articles?.first?.title ?? "no data")
                 bindNewsToDataSource(newsResponse: response)
             case .failure(let error):
+                refreshController.endRefreshing()
                 print(error.localizedDescription)
             }
         }
@@ -66,5 +69,11 @@ extension HomeViewController {
         self.newsTable.delegate = tableDataSources
         self.newsTable.dataSource = tableDataSources
         self.newsTable.reloadData()
+    }
+    
+    func setRefreshController(){
+        refreshController.tintColor = .black
+        refreshController.addTarget(self, action: #selector(requestNewsList), for: .valueChanged)
+        newsTable.addSubview(refreshController)
     }
 }

@@ -8,7 +8,10 @@ import UIKit
 import Kingfisher
 class NewsDataSources: NSObject, UITableViewDelegate , UITableViewDataSource {
     private var postViewModel: NewsSectionViewModel
-    
+    private var localNewsViewModel = LocalNewsViewModel()
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var render: IRenderView?
+
     init(_ postViewModel: NewsSectionViewModel){
         self.postViewModel = postViewModel
     }
@@ -24,10 +27,33 @@ class NewsDataSources: NSObject, UITableViewDelegate , UITableViewDataSource {
         cell.lblNewsDescription.text = newsItem.url
         let img = URL(string:newsItem.url ?? "https://apiv2.allsportsapi.com//logo//players//100288_diego-bri.jpg")
         cell.imgNews.kf.setImage(with:img)
+        cell.caching = self
+        cell.artical = newsItem
+        dump(cell.artical ?? Article())
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 250
     }
+}
+
+extension NewsDataSources: CachingProtocol{
+    func saveArticleToFavourite(article: Article) {
+        localNewsViewModel.saveArticalToFavourite(appDelegate: appDelegate, articale: article)
+        render?.reload()
+    }
+    
+    func deleteArticleFromFavourtie(title: String) {
+        localNewsViewModel.deleteNewsFromFavourite(appDelegate: appDelegate, title: title) { error in
+            print(error?.localizedDescription ?? "")
+            render?.reload()
+        }
+    }
+    
+    func isArticleSaved(title: String) -> Bool  {
+        return localNewsViewModel.isSavedArticale(appDelegate: appDelegate , articaleTitle: title)
+    }
+    
+    
 }
