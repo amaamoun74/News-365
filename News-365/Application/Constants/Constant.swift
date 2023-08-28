@@ -11,3 +11,4 @@ public var BASE_URL = "https://newsapi.org/v2/"
 public var API_KEY: String  {
     Bundle.main.infoDictionary!["APIKey"] as! String
 }
+public var ENTITY_NAME = "Artical_Entity"
