@@ -32,6 +32,7 @@ class NewsTableViewCell: UITableViewCell {
             dump(artical)
             caching?.saveArticleToFavourite(article: artical!)
             btnSave.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

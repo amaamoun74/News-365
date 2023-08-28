@@ -29,6 +29,11 @@ class NewsDataSources: NSObject, UITableViewDelegate , UITableViewDataSource {
         cell.imgNews.kf.setImage(with:img)
         cell.caching = self
         cell.artical = newsItem
+        if localNewsViewModel.isSavedArticale(appDelegate: appDelegate, articaleTitle: newsItem.title ?? "") == true {
+            cell.btnSave.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        }else{
+            cell.btnSave.setImage(UIImage(systemName: "bookmark"), for: .normal)
+        }
         dump(cell.artical ?? Article())
         return cell
     }
@@ -54,6 +59,4 @@ extension NewsDataSources: CachingProtocol{
     func isArticleSaved(title: String) -> Bool  {
         return localNewsViewModel.isSavedArticale(appDelegate: appDelegate , articaleTitle: title)
     }
-    
-    
 }
