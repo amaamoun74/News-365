@@ -16,4 +16,5 @@ struct Article :Codable {
     var urlToImage : String?
     var publishedAt : String?
     var content: String?
+    var product_state: Bool?
 }

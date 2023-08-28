@@ -14,7 +14,7 @@ class RemoteUseCase {
     }
     
     func getNews(category: String, country: String, compiltion: @escaping (Result<News?, ServiceError>) -> Void){
-        var topHeadlines: Endpoint = .topHeadlines(category: category, country: country)
+        let topHeadlines: Endpoint = .topHeadlines(category: category, country: country)
         repo.getNews(endPoint: topHeadlines) { result in
             compiltion(result)
         }
