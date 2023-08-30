@@ -7,8 +7,9 @@
 
 import Foundation
 
-public var BASE_URL = "https://newsapi.org/v2/"
+public let BASE_URL = "https://newsapi.org/v2/"
 public var API_KEY: String  {
     Bundle.main.infoDictionary!["APIKey"] as! String
 }
-public var ENTITY_NAME = "Artical_Entity"
+public let ENTITY_NAME = "Artical_Entity"
+public let APPLE_LANGUAGES = "AppleLanguages"
