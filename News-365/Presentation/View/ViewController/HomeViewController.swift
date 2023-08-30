@@ -9,6 +9,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var lblNews: UILabel!
+    @IBOutlet weak var lblCategory: UILabel!
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var homeTabBarItem: UITabBarItem!
     @IBOutlet weak var newsTable: UITableView!
     @IBOutlet weak var newsCategory: UICollectionView!
     private var remoteViewModel = RemoteNewsViewModel()
@@ -26,7 +30,8 @@ class HomeViewController: UIViewController {
                         Category(CategoryName: "science" , cattegoryImage: nil),
                         Category(CategoryName: "technology" , cattegoryImage: "techIcon"),
                         Category(CategoryName: "sports" , cattegoryImage: "sportIcon")]
-       setRefreshController()
+        configureViewsForLocalization()
+        setRefreshController()
         registerCell()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -75,5 +80,14 @@ extension HomeViewController {
         refreshController.tintColor = .black
         refreshController.addTarget(self, action: #selector(requestNewsList), for: .valueChanged)
         newsTable.addSubview(refreshController)
+    }
+}
+// configure view items for localization
+extension HomeViewController {
+    private func configureViewsForLocalization(){
+        lblNews.text = NSLocalizedString("news", comment: "")
+        lblCategory.text = NSLocalizedString("category", comment: "")
+        homeTabBarItem.title = NSLocalizedString("home_title", comment: "") 
+        searchBar.placeholder = NSLocalizedString("search_hint", comment: "") 
     }
 }

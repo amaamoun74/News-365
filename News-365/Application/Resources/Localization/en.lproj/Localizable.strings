@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  News-365
+
+  Created by ahmed on 29/08/2023.
+  
+*/
+"category" = "Category";
+"news" = "News";
+"app language" = "Language";
+"news_countery" = "News Country";
+"dark_mode" = "Dark Mode";
+"saved_title" = "Saved";
+"home_title" = "Home";
+"settings_ title" = "Settings";
+"general" = "General";
+"business" = "Business";
+"entertainment" = "Entertainment";
+"health" = "Health";
+"science" = "Science";
+"technology" = "Technology";
+"sports" = "Sports";
+"search_hint" = "Search here ...";
+"alert_title" = "Warning";
+"alert_message" = "This action requires application Resert!";
+"ok" = "OK";
+"cancle" = "cancle";

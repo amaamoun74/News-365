@@ -24,12 +24,12 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGV-AK-9QK">
                                 <rect key="frame" x="8" y="100.66666666666667" width="102" height="33.333333333333329"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.81206897774127995" green="0.49109754111132398" blue="0.0031281663946563804" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.1831975149" green="0.41022608170000002" blue="0.42372131349999997" alpha="0.76283627949999999" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bGV-AK-9QK" firstAttribute="height" secondItem="U2U-Ut-7Ud" secondAttribute="height" multiplier="0.25" id="BsO-vE-NFO"/>
                             <constraint firstAttribute="trailing" secondItem="bGV-AK-9QK" secondAttribute="trailing" constant="8" id="HXj-7K-5bL"/>

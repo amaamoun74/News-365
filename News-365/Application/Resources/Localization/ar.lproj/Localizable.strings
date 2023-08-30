@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  News-365
+
+  Created by ahmed on 29/08/2023.
+  
+*/
+"category" = "التصنيفات";
+"news" = "الأخبار";
+"app_language" = "اللغة";
+"news_countery" = "دولة الأخبار";
+"dark_mode" = "الوضع الليلي";
+"saved_title" = "المحفوظات";
+"home_title" = "الرئيسية";
+"settings_ title" = "الاعدادات";
+"general" = "المنوعات";
+"business" = "الأعمال";
+"entertainment" = "الترفيه";
+"health" = "الصحة";
+"science" = "العلمية";
+"technology" = "التكنولوجيا";
+"sports" = "الرياضة";
+"search_hint" = "ابحث هنا ...";
+"alert_title" = "تحذير";
+"alert_message" = "!يتطلب هذا اعادة تشغيل التطبيق";
+"ok" = "حسنآ";
+"cancle" = "إلغاء";

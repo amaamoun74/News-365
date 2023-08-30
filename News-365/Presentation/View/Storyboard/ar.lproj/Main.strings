@@ -1,0 +1,49 @@
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "DAO-MH-Ij9"; */
+"DAO-MH-Ij9.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "US"; ObjectID = "FOz-z1-Iei"; */
+"FOz-z1-Iei.configuration.title" = "US";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "FOz-z1-Iei"; */
+"FOz-z1-Iei.normalTitle" = "Button";
+
+/* Class = "UISegmentedControl"; FXD-or-dNP.segmentTitles[0] = "EN"; ObjectID = "FXD-or-dNP"; */
+"FXD-or-dNP.segmentTitles[0]" = "EN";
+
+/* Class = "UISegmentedControl"; FXD-or-dNP.segmentTitles[1] = "AR"; ObjectID = "FXD-or-dNP"; */
+"FXD-or-dNP.segmentTitles[1]" = "AR";
+
+/* Class = "UITabBarItem"; title = "Saved"; ObjectID = "Hyc-bD-BWc"; */
+"Hyc-bD-BWc.title" = "المحفوظات";
+
+/* Class = "UILabel"; text = "Dark Mode"; ObjectID = "Ivx-TO-Vih"; */
+"Ivx-TO-Vih.text" = "Dark Mode";
+
+/* Class = "UINavigationItem"; title = "home"; ObjectID = "Sdw-ia-Pua"; */
+"Sdw-ia-Pua.title" = "home";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "ZVU-Rj-MXN"; */
+"ZVU-Rj-MXN.title" = "Home";
+
+/* Class = "UILabel"; text = "Language"; ObjectID = "aGj-Ef-UCS"; */
+"aGj-Ef-UCS.text" = "Language";
+
+/* Class = "UILabel"; text = "News"; ObjectID = "gax-bg-rnM"; */
+"gax-bg-rnM.text" = "News";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "mFt-rs-rgl"; */
+"mFt-rs-rgl.title" = "الاعدادات";
+
+/* Class = "UILabel"; text = "News Country"; ObjectID = "qkX-8h-viv"; */
+"qkX-8h-viv.text" = "News Country";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "vE7-xs-xQ7"; */
+"vE7-xs-xQ7.title" = "الاعدادات";
+
+/* Class = "UINavigationItem"; title = "Saved"; ObjectID = "wAQ-Dz-XfP"; */
+"wAQ-Dz-XfP.title" = "المحفوظات";
+
+/* Class = "UILabel"; text = "Categories"; ObjectID = "zND-iR-Hhd"; */
+"zND-iR-Hhd.text" = "category";
+

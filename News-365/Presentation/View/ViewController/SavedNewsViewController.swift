@@ -9,6 +9,8 @@ import UIKit
 
 class SavedNewsViewController: UIViewController {
 
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var titleSaved: UINavigationItem!
     @IBOutlet weak var savedNewsTable: UITableView!
     private var tableDataSources : NewsDataSources?
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
