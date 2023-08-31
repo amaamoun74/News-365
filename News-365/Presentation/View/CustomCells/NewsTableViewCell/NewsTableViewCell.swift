@@ -44,8 +44,11 @@ class NewsTableViewCell: UITableViewCell {
 extension NewsTableViewCell {
     private func configureView(){
         lblNewsDescription.sizeToFit()
-        btnSave.layer.borderColor =  UIColor.black.cgColor
+        btnSave.layer.borderColor =  UIColor(named: "secondRed")?.cgColor
         btnSave.layer.borderWidth = 1.5
         btnSave.layer.cornerRadius = 10
+        imgNews.layer.borderWidth = 0.5
+        imgNews.layer.borderColor =  UIColor(named: "secondRed")?.cgColor
+        imgNews.layer.cornerRadius = 5
     }
 }

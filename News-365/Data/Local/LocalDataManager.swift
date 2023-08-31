@@ -13,7 +13,7 @@ class LocalDataManager: IDataManager {
     func fetch(searchedTitle: String, appDelegate : AppDelegate) -> [Article] {
         var articalArray: [Article] = []
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: ENTITY_NAME)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.shared.ENTITY_NAME)
       //  fetchRequest.predicate = NSPredicate(format: "title == %@", searchedTitle)
         
         do {
@@ -41,7 +41,7 @@ class LocalDataManager: IDataManager {
     func delete(appDelegate: AppDelegate, title: String , complition : (Error?) -> Void){
         let managedContext = appDelegate.persistentContainer.viewContext
         do{
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ENTITY_NAME)
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Constants.shared.ENTITY_NAME)
             fetchRequest.predicate = NSPredicate(format: "title == %@", title)
             
             let product = try managedContext.fetch(fetchRequest)
@@ -63,7 +63,7 @@ class LocalDataManager: IDataManager {
     func save(articale : Article, appDelegate : AppDelegate) -> Void
     {
         let managedContext = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: ENTITY_NAME, in: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: Constants.shared.ENTITY_NAME, in: managedContext)
         let articalList = NSManagedObject(entity: entity!, insertInto: managedContext)
         articalList.setValue(articale.title ?? 0, forKey: "title")
         articalList.setValue(articale.author , forKey: "author")
@@ -85,7 +85,7 @@ class LocalDataManager: IDataManager {
     {
         var state : Bool = false
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: ENTITY_NAME)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.shared.ENTITY_NAME)
 
         fetchRequest.predicate = NSPredicate(format: "title == %@", articalTitle)
         

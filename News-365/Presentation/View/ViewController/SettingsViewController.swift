@@ -9,6 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
+    @IBOutlet weak var switchBtnDarkMode: UISwitch!
     @IBOutlet weak var segmentLanguage: UISegmentedControl!
     @IBOutlet weak var lblDarkMode: UILabel!
     @IBOutlet weak var lblNewsCountry: UILabel!
@@ -18,9 +19,18 @@ class SettingsViewController: UIViewController {
         setSegmentLanguage()
         configurViewLanguage()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        switchBtnDarkMode.isOn = traitCollection.userInterfaceStyle == .dark
+    }
     @IBAction func selectLanguage(_ sender: Any) {
         showAlert()
+    }
+    
+    @IBAction func setDarkMode(_ sender: UISwitch) {
+           
+        let theme: AppTheme = sender.isOn ? .dark : .light
+           let appDelegate = UIApplication.shared.delegate as? AppDelegate
+           appDelegate?.updateAppTheme(theme: theme)
     }
 }
 
@@ -39,7 +49,7 @@ extension SettingsViewController {
         alert.addAction(UIAlertAction(title: firtsActionTitle, style: .default , handler: { action in
             self.changeLanguage()
         }))
-
+        
         self.present(alert, animated: true , completion: nil )
     }
     
@@ -49,7 +59,7 @@ extension SettingsViewController {
         print("language: \(String(describing: newLanguage?.lowercased()))" )
         print("oldlanguage: \(String(describing: currentLanguage))" )
         if currentLanguage != newLanguage {
-            UserDefaults.standard.set([newLanguage!.lowercased()], forKey: APPLE_LANGUAGES)
+            UserDefaults.standard.set([newLanguage!.lowercased()], forKey: Constants.shared.APPLE_LANGUAGES)
             exit(0)
         }
     }
@@ -65,4 +75,7 @@ extension SettingsViewController {
         lblNewsCountry.text = NSLocalizedString("news_countery", comment: "")
         lblAppLanguage.text = NSLocalizedString("app_language", comment: "")
     }
+    
+    
+    
 }

@@ -15,9 +15,9 @@ enum Endpoint {
     var path: String {
         switch self {
         case .searchNews:
-            return "\(BASE_URL)everything"
+            return "\(Constants.shared.BASE_URL)everything"
         case .topHeadlines:
-            return "\(BASE_URL)top-headlines"
+            return "\(Constants.shared.BASE_URL)top-headlines"
         }
     }
     
@@ -37,9 +37,9 @@ enum Endpoint {
     var parameters: Parameters? {
         switch self {
         case .searchNews(keyword: let keyword):
-            return ["q": keyword, "apiKey": API_KEY]
+            return ["q": keyword, "apiKey": Constants.shared.API_KEY]
         case .topHeadlines(category: let category, country: let country):
-            return ["country": country, "category": category, "apiKey": API_KEY]
+            return ["country": country, "category": category, "apiKey": Constants.shared.API_KEY]
             //default: return nil
         }
     }
