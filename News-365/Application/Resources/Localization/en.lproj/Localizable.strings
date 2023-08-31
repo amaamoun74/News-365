@@ -7,7 +7,7 @@
 */
 "category" = "Category";
 "news" = "News";
-"app language" = "Language";
+"app_language" = "Language";
 "news_countery" = "News Country";
 "dark_mode" = "Dark Mode";
 "saved_title" = "Saved";

@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,31 +11,31 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CategoryCollectionViewCell" customModule="News_365" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="134" height="150"/>
+            <rect key="frame" x="0.0" y="0.0" width="135" height="134"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="134" height="150"/>
+                <rect key="frame" x="0.0" y="0.0" width="135" height="134"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="U2U-Ut-7Ud">
-                        <rect key="frame" x="8" y="8" width="118" height="134"/>
+                        <rect key="frame" x="2" y="4" width="129" height="126"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OdI-To-WJH">
-                                <rect key="frame" x="0.0" y="0.0" width="118" height="100.66666666666667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="129" height="94.666666666666671"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGV-AK-9QK">
-                                <rect key="frame" x="8" y="100.66666666666667" width="102" height="33.333333333333329"/>
+                                <rect key="frame" x="0.0" y="94.666666666666671" width="129" height="31.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" name="secondRed"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.1831975149" green="0.41022608170000002" blue="0.42372131349999997" alpha="0.76283627949999999" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="systemColor"/>
                         <constraints>
                             <constraint firstItem="bGV-AK-9QK" firstAttribute="height" secondItem="U2U-Ut-7Ud" secondAttribute="height" multiplier="0.25" id="BsO-vE-NFO"/>
-                            <constraint firstAttribute="trailing" secondItem="bGV-AK-9QK" secondAttribute="trailing" constant="8" id="HXj-7K-5bL"/>
+                            <constraint firstAttribute="trailing" secondItem="bGV-AK-9QK" secondAttribute="trailing" id="HXj-7K-5bL"/>
                             <constraint firstItem="OdI-To-WJH" firstAttribute="height" secondItem="U2U-Ut-7Ud" secondAttribute="height" multiplier="0.75" id="ID2-MD-crt"/>
-                            <constraint firstItem="bGV-AK-9QK" firstAttribute="leading" secondItem="U2U-Ut-7Ud" secondAttribute="leading" constant="8" id="PBS-kn-hDZ"/>
+                            <constraint firstItem="bGV-AK-9QK" firstAttribute="leading" secondItem="U2U-Ut-7Ud" secondAttribute="leading" id="PBS-kn-hDZ"/>
                             <constraint firstItem="OdI-To-WJH" firstAttribute="leading" secondItem="U2U-Ut-7Ud" secondAttribute="leading" id="qU2-m2-rwW"/>
                             <constraint firstAttribute="trailing" secondItem="OdI-To-WJH" secondAttribute="trailing" id="wrE-Vh-1o7"/>
                         </constraints>
@@ -43,17 +44,26 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstAttribute="top" secondItem="U2U-Ut-7Ud" secondAttribute="top" constant="-8" id="6pI-8C-l8Z"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="U2U-Ut-7Ud" secondAttribute="bottom" constant="8" id="X33-EG-3qd"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="U2U-Ut-7Ud" secondAttribute="trailing" constant="8" id="asC-Uv-6uo"/>
-                <constraint firstItem="U2U-Ut-7Ud" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="8" id="eLz-yf-lcI"/>
+                <constraint firstAttribute="top" secondItem="U2U-Ut-7Ud" secondAttribute="top" constant="-4" id="6pI-8C-l8Z"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="U2U-Ut-7Ud" secondAttribute="bottom" constant="4" id="X33-EG-3qd"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="U2U-Ut-7Ud" secondAttribute="trailing" constant="4" id="asC-Uv-6uo"/>
+                <constraint firstItem="U2U-Ut-7Ud" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="2" id="eLz-yf-lcI"/>
             </constraints>
-            <size key="customSize" width="134" height="150"/>
+            <size key="customSize" width="135" height="134"/>
             <connections>
                 <outlet property="categoryImg" destination="OdI-To-WJH" id="rmm-2Z-z48"/>
                 <outlet property="lblCategoryName" destination="bGV-AK-9QK" id="RzU-Fg-GDc"/>
+                <outlet property="stackView" destination="U2U-Ut-7Ud" id="NSS-yJ-UG6"/>
             </connections>
-            <point key="canvasLocation" x="129.7709923664122" y="-41.549295774647888"/>
+            <point key="canvasLocation" x="130.53435114503816" y="-47.183098591549296"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <namedColor name="secondRed">
+            <color red="0.55654484029999995" green="0.1784609556" blue="0.1011266187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="systemColor">
+            <color red="1" green="0.99999994039999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
