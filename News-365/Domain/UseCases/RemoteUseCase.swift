@@ -20,7 +20,10 @@ class RemoteUseCase {
         }
     }
     
-    func searchNews(keyword: String, compilition: @escaping (Result<News, ServiceError>) -> Void){
-        
+    func searchNews(keyword: String, compilition: @escaping (Result<News?, ServiceError>) -> Void){
+        let search: Endpoint = .searchNews(keyword: keyword)
+        repo.searchNews(keyword: keyword) { result in
+            compilition(result)
+        }
     }
 }

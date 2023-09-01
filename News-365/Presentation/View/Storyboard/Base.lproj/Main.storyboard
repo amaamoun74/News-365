@@ -141,6 +141,7 @@
                         <outlet property="newsCategory" destination="d1e-Dz-YBh" id="u26-2r-hqN"/>
                         <outlet property="newsTable" destination="dZG-g8-lM6" id="kVV-Wz-vsF"/>
                         <outlet property="searchBar" destination="usK-gK-aAZ" id="aTL-0u-baX"/>
+                        <outlet property="searchControler" destination="usK-gK-aAZ" id="0bs-po-R0t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -445,13 +446,13 @@
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
         <image name="homekit" catalog="system" width="128" height="104"/>
         <namedColor name="mainRed">
-            <color red="0.73684489730000002" green="0.24682813880000001" blue="0.14010444280000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.7369999885559082" green="0.24699999392032623" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="secondRed">
-            <color red="0.55654484029999995" green="0.1784609556" blue="0.1011266187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.55699998140335083" green="0.17800000309944153" blue="0.10100000351667404" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="systemColor">
-            <color red="1" green="0.99999994039999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
