@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var searchControler: UISearchBar!
     @IBOutlet weak var lblNews: UILabel!
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -23,6 +24,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        searchControler.delegate = self
         categoryList = [Category(CategoryName: "general" , cattegoryImage: nil),
                         Category(CategoryName: "business" , cattegoryImage: "businessIcon"),
                         Category(CategoryName: "entertainment" , cattegoryImage: nil),
@@ -89,5 +91,23 @@ extension HomeViewController {
         lblCategory.text = NSLocalizedString("category", comment: "")
         homeTabBarItem.title = NSLocalizedString("home_title", comment: "") 
         searchBar.placeholder = NSLocalizedString("search_hint", comment: "") 
+    }
+}
+extension HomeViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if !searchText.isEmpty {
+            print(searchText)
+            remoteViewModel.searchForNews(titleKeyword: searchText) { [unowned self] result in
+                switch result {
+                case .success(let response):
+                    refreshController.endRefreshing()
+                    print (response?.articles?.first?.title ?? "no data")
+                    bindNewsToDataSource(newsResponse: response)
+                case .failure(let error):
+                    refreshController.endRefreshing()
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
 }

@@ -23,7 +23,7 @@ class RemoteRepoImpl: RemoteNewsRepoProtocol {
     }
     
     func searchNews(keyword: String, compilition: @escaping (Result<News?, ServiceError>) -> Void) {
-        networkManger.request(endpoint: .topHeadlines(category: "", country: ""), responseClass: News.self) { result in
+        networkManger.request(endpoint: .searchNews(keyword: keyword), responseClass: News.self) { result in
             compilition(result)
         }
         

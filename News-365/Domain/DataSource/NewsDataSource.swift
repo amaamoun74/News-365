@@ -24,8 +24,8 @@ class NewsDataSources: NSObject, UITableViewDelegate , UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as! NewsTableViewCell
         let newsItem = postViewModel.dataSource[indexPath.row]
         cell.lblNewsTitle.text = newsItem.title
-        cell.lblNewsDescription.text = newsItem.url
-        let img = URL(string:newsItem.url ?? "https://apiv2.allsportsapi.com//logo//players//100288_diego-bri.jpg")
+        cell.lblNewsDescription.text = newsItem.description
+        let img = URL(string:newsItem.urlToImage ?? "https://apiv2.allsportsapi.com//logo//players//100288_diego-bri.jpg")
         cell.imgNews.kf.setImage(with:img)
         cell.caching = self
         cell.artical = newsItem
