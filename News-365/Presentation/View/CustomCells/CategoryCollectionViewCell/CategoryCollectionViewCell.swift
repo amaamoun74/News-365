@@ -14,12 +14,19 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var categoryImg: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureView()
+        
+        // configureUnselectedView()
         // Initialization code
     }
-    private func configureView(){
-        stackView.layer.borderColor =  UIColor(named: "secondRed")?.cgColor
-        stackView.layer.borderWidth = 1.5
-        stackView.layer.cornerRadius = 10
+    func configureUnselectedView(){
+        contentView.layer.borderColor =  UIColor(named: "thirdRed")?.cgColor
+        contentView.layer.borderWidth = 1.5
+        contentView.layer.cornerRadius = 10
+    }
+    func configureSelectedView(){
+        print("AHMED")
+        contentView.layer.borderColor =  UIColor(named: "secondRed")?.cgColor
+        contentView.layer.borderWidth = 1.5
+        contentView.layer.cornerRadius = 10
     }
 }
