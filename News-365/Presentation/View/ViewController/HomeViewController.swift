@@ -9,6 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var tableStackView: UIStackView!
+    @IBOutlet weak var lblError: UILabel!
+    @IBOutlet weak var imgError: UIImageView!
     @IBOutlet weak var searchControler: UISearchBar!
     @IBOutlet weak var lblNews: UILabel!
     @IBOutlet weak var lblCategory: UILabel!
@@ -58,6 +61,7 @@ class HomeViewController: UIViewController {
 /// request news and send result to data source for displying it
 extension HomeViewController {
     @objc func requestNewsList(category: String = "general"){
+        newsTable.isHidden = false
         remoteViewModel.getNews(category: category) { [unowned self] result in
             switch result {
             case .success(let response):
@@ -65,7 +69,7 @@ extension HomeViewController {
                 print (response?.articles?.first?.title ?? "no data")
                 bindNewsToDataSource(newsResponse: response)
             case .failure(let error):
-                refreshController.endRefreshing()
+                handleError(error: error)
                 print(error.localizedDescription)
             }
         }
@@ -121,5 +125,32 @@ extension HomeViewController: ICategorySelection {
         self.requestNewsList(category: categoryType)
     }
     
+    func handleError(error: ServiceError) {
+        refreshController.endRefreshing()
+       // newsTable.isHidden = true
+        switch (error) {
+        case .networkFailure:
+            lblError.text = "No internet connection"
+            print("No internet connection")
+        case .ClinetError:
+            lblError.text = "Bad request.. please try agian"
+            print("Bad request.. please try agian")
+        case .ServerError:
+            lblError.text = "Server error.. please try again later"
+            print("Server error.. please try again later")
+        case .invalidResponse:
+            lblError.text = "Bad response"
+            print("Bad response")
+        case .decodingError:
+            lblError.text = "Error while getting response from the server"
+            print("Error while getting response from the server")
+        case .encodingError:
+            lblError.text = "Error while sending requset to server"
+            print("Error while sending requset to server")
+        case .customError(_):
+            lblError.text = "invaild action"
+            print("invaild action")
+        }
+    }
     
 }
