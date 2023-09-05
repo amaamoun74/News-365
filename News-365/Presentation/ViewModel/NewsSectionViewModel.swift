@@ -7,8 +7,9 @@
 
 import Foundation
 class NewsSectionViewModel{
-    var dataSource: [Article]
+    var dataSource: [Article] = []
     init(_ dataSource: [Article]) {
+        self.dataSource.removeAll()
         self.dataSource = dataSource
     }
 }

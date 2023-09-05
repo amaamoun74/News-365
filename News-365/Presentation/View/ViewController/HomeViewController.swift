@@ -47,6 +47,7 @@ class HomeViewController: UIViewController {
     func bindCategoriesToDataSource(){
         let categoryViewModel = CategorySectionViewModel(categoryList!)
         self.collectionDataSource = .init(categoryViewModel)
+        collectionDataSource?.categorySelection = self
         self.newsCategory.delegate = collectionDataSource
         self.newsCategory.dataSource = collectionDataSource
         
@@ -56,8 +57,8 @@ class HomeViewController: UIViewController {
 
 /// request news and send result to data source for displying it
 extension HomeViewController {
-    @objc func requestNewsList(){
-        remoteViewModel.getNews(category: "general") { [unowned self] result in
+    @objc func requestNewsList(category: String = "general"){
+        remoteViewModel.getNews(category: category) { [unowned self] result in
             switch result {
             case .success(let response):
                 refreshController.endRefreshing()
@@ -110,4 +111,15 @@ extension HomeViewController: UISearchBarDelegate {
             }
         }
     }
+}
+
+extension HomeViewController: ICategorySelection {
+    func getNewsWithCategory(categoryType: String) {
+        print("maamoun")
+        self.newsTable.reloadData()
+        self.setRefreshController()
+        self.requestNewsList(category: categoryType)
+    }
+    
+    
 }

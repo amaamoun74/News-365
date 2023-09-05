@@ -11,7 +11,6 @@ class CategoryDataSource: NSObject {
     private var categoryViewModel: CategorySectionViewModel
     var categorySelection: ICategorySelection?
     private var selectedIndex: Int = 0
-    private var lastInactiveIndex: IndexPath = [1 ,0]
     init(_ categoryViewModel: CategorySectionViewModel){
         self.categoryViewModel = categoryViewModel
     }
@@ -27,6 +26,7 @@ extension CategoryDataSource: UICollectionViewDelegate {
             else {
                 cell.configureUnselectedView()
             }
+            categorySelection?.getNewsWithCategory(categoryType:categoryViewModel.dataSource[indexPath.row].CategoryName ?? "general")
             
         }
     }
