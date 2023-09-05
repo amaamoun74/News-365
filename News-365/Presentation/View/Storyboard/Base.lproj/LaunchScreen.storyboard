@@ -1,8 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,10 +14,46 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DqH-Ak-CIt">
+                                <rect key="frame" x="39.333333333333343" y="310.66666666666669" width="314.33333333333326" height="255.66666666666669"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newspaper.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TBJ-bA-WVb">
+                                        <rect key="frame" x="0.0" y="0.3333333333333286" width="314.33333333333331" height="218.33333333333331"/>
+                                        <color key="tintColor" name="mainRed"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="N E W S  -  3 6 5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsW-vO-aEw">
+                                        <rect key="frame" x="67.666666666666643" y="223.66666666666669" width="179.33333333333337" height="32"/>
+                                        <fontDescription key="fontDescription" name="Futura-CondensedExtraBold" family="Futura" pointSize="25"/>
+                                        <color key="textColor" name="mainRed"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="YsW-vO-aEw" firstAttribute="top" secondItem="TBJ-bA-WVb" secondAttribute="bottom" constant="5.0000000000000568" id="8Ls-ch-vKa"/>
+                                    <constraint firstAttribute="bottom" secondItem="YsW-vO-aEw" secondAttribute="bottom" id="9p0-xn-z4k"/>
+                                    <constraint firstItem="TBJ-bA-WVb" firstAttribute="top" secondItem="DqH-Ak-CIt" secondAttribute="top" constant="-3.5527136788005009e-15" id="UxO-iV-14N"/>
+                                    <constraint firstAttribute="trailing" secondItem="TBJ-bA-WVb" secondAttribute="trailing" id="iUZ-nS-NQY"/>
+                                    <constraint firstItem="TBJ-bA-WVb" firstAttribute="leading" secondItem="DqH-Ak-CIt" secondAttribute="leading" id="ug3-YT-YCl"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="UxO-iV-14N"/>
+                                        <exclude reference="9p0-xn-z4k"/>
+                                    </mask>
+                                </variation>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DqH-Ak-CIt" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.3" id="BFg-LN-VoR"/>
+                            <constraint firstItem="DqH-Ak-CIt" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="FQw-IK-cH8"/>
+                            <constraint firstItem="DqH-Ak-CIt" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="cY7-in-R4R"/>
+                            <constraint firstItem="DqH-Ak-CIt" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8" id="qf3-oh-PQv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -22,4 +61,13 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="newspaper.fill" catalog="system" width="128" height="112"/>
+        <namedColor name="mainRed">
+            <color red="0.7369999885559082" green="0.24699999392032623" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
