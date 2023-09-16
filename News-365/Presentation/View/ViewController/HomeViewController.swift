@@ -78,6 +78,7 @@ extension HomeViewController {
     func bindNewsToDataSource(newsResponse response: News?){
         let newsSectionViewModel = NewsSectionViewModel(response?.articles ?? [Article]())
         self.tableDataSources = .init(newsSectionViewModel)
+        self.tableDataSources?.navigationProtocol = self
         self.newsTable.delegate = tableDataSources
         self.newsTable.dataSource = tableDataSources
         self.newsTable.reloadData()
@@ -153,4 +154,17 @@ extension HomeViewController: ICategorySelection {
         }
     }
     
+}
+extension HomeViewController: NavigationProtocol {
+    func navigateToWebView(articalURL: String?) {
+        if let url = articalURL {
+            let webVC = self.storyboard!.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
+            webVC.articaleURL = url
+            self.present(webVC, animated: true)
+            //self.navigationController?.presViewController(webVC, animated: true)
+        }
+        else {
+            print("nil url")
+        }
+    }
 }

@@ -33,13 +33,13 @@
                                 <rect key="frame" x="8" y="167" width="414" height="118.33333333333331"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cat" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="0.0" translatesAutoresizingMaskIntoConstraints="NO" id="zND-iR-Hhd">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="31.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="28.666666666666668"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <color key="textColor" name="secondRed"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d1e-Dz-YBh">
-                                        <rect key="frame" x="0.0" y="39.666666666666664" width="414" height="78.666666666666686"/>
+                                        <rect key="frame" x="0.0" y="36.666666666666664" width="414" height="81.666666666666686"/>
                                         <color key="backgroundColor" name="systemColor"/>
                                         <color key="tintColor" name="systemColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0Lo-Qz-6iC">
@@ -130,6 +130,7 @@
                             <constraint firstItem="q2O-xd-yGI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="WAG-QA-LeA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="usK-gK-aAZ" secondAttribute="trailing" constant="4" id="Wo6-83-E47"/>
                             <constraint firstItem="q2O-xd-yGI" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="aHm-Oo-tMp"/>
+                            <constraint firstItem="usK-gK-aAZ" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.075" id="aya-D6-9Cr"/>
                             <constraint firstItem="usK-gK-aAZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="cEz-qx-aCs"/>
                             <constraint firstItem="cTp-1Z-UnO" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="fvR-jA-3Cp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ev2-Kv-GlF" secondAttribute="trailing" constant="8" id="gAI-Mw-g67"/>
@@ -138,6 +139,11 @@
                             <constraint firstItem="ev2-Kv-GlF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="qeg-qw-9fC"/>
                             <constraint firstItem="ev2-Kv-GlF" firstAttribute="top" secondItem="usK-gK-aAZ" secondAttribute="bottom" constant="4" id="vND-Ei-PL3"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aya-D6-9Cr"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="ZVU-Rj-MXN">
                         <imageReference key="image" image="homekit" catalog="system"/>
@@ -232,15 +238,15 @@
             </objects>
             <point key="canvasLocation" x="2931" y="-4"/>
         </scene>
-        <!--View Controller-->
+        <!--Web View Controller-->
         <scene sceneID="Avv-No-QEL">
             <objects>
-                <viewController id="qkX-A0-FYk" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WebVC" id="qkX-A0-FYk" customClass="WebViewController" customModule="News_365" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5Hn-y0-R6a">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDv-eR-Eif">
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NDv-eR-Eif" customClass="web">
                                 <rect key="frame" x="0.0" y="59" width="430" height="839"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -278,10 +284,13 @@
                             <constraint firstItem="DAO-MH-Ij9" firstAttribute="bottom" secondItem="NDv-eR-Eif" secondAttribute="bottom" constant="-64" id="vly-10-NGZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="NDv-eR-Eif" id="w0E-k8-38U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kaq-Fk-fIE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4651.1450381679388" y="-298.59154929577466"/>
+            <point key="canvasLocation" x="4141" y="-288"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="iov-QX-eJ3">
@@ -457,8 +466,8 @@
         <image name="bookmark.fill" catalog="system" width="110" height="128"/>
         <image name="businessIcon" width="512" height="512"/>
         <image name="gearshape.fill" catalog="system" width="128" height="123"/>
-        <image name="homekit" catalog="system" width="128" height="104"/>
-        <image name="square.and.arrow.down.fill" catalog="system" width="121" height="128"/>
+        <image name="homekit" catalog="system" width="32" height="32"/>
+        <image name="square.and.arrow.down.fill" catalog="system" width="32" height="32"/>
         <namedColor name="mainRed">
             <color red="0.7369999885559082" green="0.24699999392032623" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
