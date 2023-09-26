@@ -14,8 +14,8 @@ target 'News-365' do
       pod 'RxSwift', '~> 6.5'
       pod 'RxCocoa', '~> 6.5'
       pod 'RxDataSources', '~> 5.0'
-      pod 'lottie-ios'
       pod 'SkeletonView'
+      pod 'ADCountryPicker', '~> 2.1.0'
 
 
   target 'News-365Tests' do

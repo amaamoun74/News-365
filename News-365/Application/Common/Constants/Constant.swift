@@ -19,4 +19,5 @@ class Constants {
     let ENTITY_NAME = "Artical_Entity"
     let APPLE_LANGUAGES = "AppleLanguages"
     let SELECTED_THEME = "selectedTheme"
+    let COUNTRYCODE = "countryCode"
 }
