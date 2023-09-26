@@ -15,7 +15,7 @@ class RemoteNewsViewModel{
      }*/
     
     func getNews(category: String, complition: @escaping(Result<News? , ServiceError>) -> Void){
-        remoteUseCase.getNews(category: category, country: "EG") { result in
+        remoteUseCase.getNews(category: category, country: "US") { result in
             complition(result)
         }
     }

@@ -25,13 +25,13 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchControler.delegate = self
-        categoryList = [Category(CategoryName: "general" , cattegoryImage: nil),
-                        Category(CategoryName: "business" , cattegoryImage: "businessIcon"),
-                        Category(CategoryName: "entertainment" , cattegoryImage: nil),
-                        Category(CategoryName: "health" , cattegoryImage: nil),
-                        Category(CategoryName: "science" , cattegoryImage: nil),
-                        Category(CategoryName: "technology" , cattegoryImage: "techIcon"),
-                        Category(CategoryName: "sports" , cattegoryImage: "sportIcon")]
+        categoryList = [Category(CategoryName: NSLocalizedString("general", comment: ""), cattegoryImage: "generalIcon"),
+                        Category(CategoryName: NSLocalizedString("business", comment: ""), cattegoryImage: "businessIcon"),
+                        Category(CategoryName: NSLocalizedString("entertainment", comment: ""), cattegoryImage: "entertainmentIcon"),
+                        Category(CategoryName: NSLocalizedString("health", comment: ""), cattegoryImage: "healthIcon"),
+                        Category(CategoryName: NSLocalizedString("science", comment: ""), cattegoryImage: "scienceIcon"),
+                        Category(CategoryName: NSLocalizedString("technology", comment: ""), cattegoryImage: "technologyIcon"),
+                        Category(CategoryName: NSLocalizedString("sports", comment: ""), cattegoryImage: "sportIcon")]
         configureViewsForLocalization()
         setRefreshController()
         registerCell()

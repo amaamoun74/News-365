@@ -31,14 +31,18 @@ class NewsTableViewCell: UITableViewCell {
                 caching?.deleteArticleFromFavourtie(title: title)
                 btnSave.setImage(UIImage(systemName: "bookmark"), for: .normal)
                 let msg = "\(title) was deleted successfully"
-                self.showSnakbar(msg: msg)
+                DispatchQueue.main.async {
+                    self.showSnakbar(msg: msg)
+                }
             }
             else {
                 dump(artical)
                 caching?.saveArticleToFavourite(article: artical!)
                 btnSave.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
                 let msg = "\(title) was added successfully"
-                showSnakbar(msg: msg)
+                DispatchQueue.main.async {
+                    self.showSnakbar(msg: msg)
+                }
             }
         }
     }
