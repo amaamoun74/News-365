@@ -25,8 +25,9 @@ class LocalDataManager: IDataManager {
                 let image = item.value(forKey: "urlToImage") as? String
                 let publishedAt = item.value(forKey: "publishedAt") as? String
                 let description = item.value(forKey: "articalDescription") as? String
+                let url = item.value(forKey: "url") as? String
                 let state = item.value(forKey: "artical_state") as? Bool
-                let articalItem = Article(author: author , title: title , description: description, urlToImage: image , publishedAt: publishedAt, product_state: state)
+                let articalItem = Article(author: author , title: title , description: description, url: url, urlToImage: image , publishedAt: publishedAt, product_state: state)
                 
                 articalArray.append(articalItem)
             }
@@ -70,6 +71,7 @@ class LocalDataManager: IDataManager {
         articalList.setValue(articale.urlToImage , forKey: "urlToImage")
         articalList.setValue(articale.description, forKey: "articalDescription")
         articalList.setValue(articale.publishedAt, forKey: "publishedAt")
+        articalList.setValue(articale.url, forKey: "url")
         articalList.setValue(true , forKey: "artical_state")
         do{
             try managedContext.save()

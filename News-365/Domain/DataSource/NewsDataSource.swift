@@ -11,7 +11,7 @@ class NewsDataSources: NSObject, UITableViewDelegate , UITableViewDataSource {
     private var localNewsViewModel = LocalNewsViewModel()
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var render: IRenderView?
-
+    var navigationProtocol: NavigationProtocol?
     init(_ postViewModel: NewsSectionViewModel){
         self.postViewModel = postViewModel
     }
@@ -40,6 +40,16 @@ class NewsDataSources: NSObject, UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("selection")
+        if let navigationProtocol = navigationProtocol {
+            navigationProtocol.navigateToWebView(articalURL: postViewModel.dataSource[indexPath.row].url)
+        }
+        else {
+            print("nil object")
+        }
     }
 }
 

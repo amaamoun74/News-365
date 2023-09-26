@@ -48,6 +48,7 @@ extension SavedNewsViewController {
         dump(articles ?? [Article]())
         self.tableDataSources = .init(newsSectionViewModel)
         self.tableDataSources?.render = self
+        self.tableDataSources?.navigationProtocol = self
         self.savedNewsTable.delegate = tableDataSources
         self.savedNewsTable.dataSource = tableDataSources
         self.savedNewsTable.reloadData()
@@ -58,5 +59,19 @@ extension SavedNewsViewController {
 extension SavedNewsViewController: IRenderView {
     func reload(){
         fetchAllSavedNewsFromCoreData()
+    }
+}
+extension SavedNewsViewController: NavigationProtocol {
+    func navigateToWebView(articalURL: String?) {
+        if let url = articalURL {
+            let webVC = self.storyboard!.instantiateViewController(withIdentifier: "WebVC") as! WebViewController
+            webVC.articaleURL = url
+            //self.present(webVC, animated: true)
+            self.navigationController?.pushViewController(webVC, animated: true)
+            
+        }
+        else {
+            print("nil url")
+        }
     }
 }
