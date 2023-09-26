@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import TTGSnackbar
 
 class NewsTableViewCell: UITableViewCell {
     
@@ -24,21 +25,26 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     @IBAction func saveNewsBtn(_ sender: Any) {
-        if caching?.isArticleSaved(title: artical?.title ?? "XYZ" ) == true {
-            caching?.deleteArticleFromFavourtie(title: artical?.title ?? "XYZ")
-            btnSave.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        }
-        else {
-            dump(artical)
-            caching?.saveArticleToFavourite(article: artical!)
-            btnSave.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            
+        
+        if let title = artical?.title {
+            if caching?.isArticleSaved(title: title) == true {
+                caching?.deleteArticleFromFavourtie(title: title)
+                btnSave.setImage(UIImage(systemName: "bookmark"), for: .normal)
+                let msg = "\(title) was deleted successfully"
+                self.showSnakbar(msg: msg)
+            }
+            else {
+                dump(artical)
+                caching?.saveArticleToFavourite(article: artical!)
+                btnSave.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                let msg = "\(title) was added successfully"
+                showSnakbar(msg: msg)
+            }
         }
     }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        //ViewModel!.saveArticalToFavourite(appDelegate: appDelegate, articale: artical!)
-        // Configure the view for the selected state
     }
 }
 extension NewsTableViewCell {
@@ -51,4 +57,16 @@ extension NewsTableViewCell {
         imgNews.layer.borderColor =  UIColor(named: "secondRed")?.cgColor
         imgNews.layer.cornerRadius = 5
     }
+    private func showSnakbar(msg: String)
+    {
+        let snackbar = TTGSnackbar(
+            message: msg,
+            duration: .middle
+            )
+        
+        snackbar.backgroundColor = .systemGreen
+        snackbar.messageTextColor = .systemBackground
+        snackbar.show()
+    }
 }
+
