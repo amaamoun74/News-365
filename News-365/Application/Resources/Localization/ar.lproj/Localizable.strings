@@ -32,3 +32,4 @@
 "decodingError" = "خطأ في إرسال البيانات";
 "encodingError" = "خطأ في قراءة البيانات";
 "customError" = "خطأ غير معروف";
+"select_Country" = "إختيار اللغة";

@@ -32,3 +32,4 @@
 "decodingError" = "Error while getting response from the server";
 "encodingError" = "Error while sending requset to server";
 "customError" = "invaild action";
+"select_Country" = "Select a Country";

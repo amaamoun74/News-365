@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 class RemoteNewsViewModel{
     let remoteUseCase = RemoteUseCase()
     /*var bindingNews : ((News?, ServiceError)->()) = {_,_ in }
@@ -15,7 +16,8 @@ class RemoteNewsViewModel{
      }*/
     
     func getNews(category: String, complition: @escaping(Result<News? , ServiceError>) -> Void){
-        remoteUseCase.getNews(category: category, country: "US") { result in
+        let country = UserDefaults.standard.value(forKey: Constants.shared.COUNTRYCODE) as? String ?? "EG"
+        remoteUseCase.getNews(category: category, country: country) { result in
             complition(result)
         }
     }
