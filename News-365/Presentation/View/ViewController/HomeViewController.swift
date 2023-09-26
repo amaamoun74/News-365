@@ -10,23 +10,20 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableStackView: UIStackView!
-    @IBOutlet weak var lblError: UILabel!
-    @IBOutlet weak var imgError: UIImageView!
     @IBOutlet weak var searchControler: UISearchBar!
-    @IBOutlet weak var lblNews: UILabel!
     @IBOutlet weak var lblCategory: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var homeTabBarItem: UITabBarItem!
-    @IBOutlet weak var newsTable: UITableView!
     @IBOutlet weak var newsCategory: UICollectionView!
     private var remoteViewModel = RemoteNewsViewModel()
     private var tableDataSources : NewsDataSources?
     private var collectionDataSource : CategoryDataSource?
     private var categoryList: [Category]?
     private let refreshController = UIRefreshControl()
+    private let errorView = (Bundle.main.loadNibNamed("ErrorDataView", owner: HomeViewController.self, options: nil)?.first as! ErrorDataView)
+    private let dataView = Bundle.main.loadNibNamed("NewsDataView", owner: HomeViewController.self, options: nil)?.first as! NewsDataView
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         searchControler.delegate = self
         categoryList = [Category(CategoryName: "general" , cattegoryImage: nil),
                         Category(CategoryName: "business" , cattegoryImage: "businessIcon"),
@@ -38,13 +35,13 @@ class HomeViewController: UIViewController {
         configureViewsForLocalization()
         setRefreshController()
         registerCell()
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         requestNewsList()
         bindCategoriesToDataSource()
     }
     func registerCell(){
-        newsTable.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
         newsCategory.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "newsCatgeogry")
     }
     func bindCategoriesToDataSource(){
@@ -53,7 +50,6 @@ class HomeViewController: UIViewController {
         collectionDataSource?.categorySelection = self
         self.newsCategory.delegate = collectionDataSource
         self.newsCategory.dataSource = collectionDataSource
-        
         self.newsCategory.reloadData()
     }
 }
@@ -61,7 +57,6 @@ class HomeViewController: UIViewController {
 /// request news and send result to data source for displying it
 extension HomeViewController {
     @objc func requestNewsList(category: String = "general"){
-        newsTable.isHidden = false
         remoteViewModel.getNews(category: category) { [unowned self] result in
             switch result {
             case .success(let response):
@@ -79,26 +74,28 @@ extension HomeViewController {
         let newsSectionViewModel = NewsSectionViewModel(response?.articles ?? [Article]())
         self.tableDataSources = .init(newsSectionViewModel)
         self.tableDataSources?.navigationProtocol = self
-        self.newsTable.delegate = tableDataSources
-        self.newsTable.dataSource = tableDataSources
-        self.newsTable.reloadData()
+        dataView.frame = self.tableStackView.bounds
+        self.tableStackView.addSubview(dataView)
+        dataView.tableNews.delegate = tableDataSources
+        dataView.tableNews.dataSource = tableDataSources
+        dataView.tableNews.reloadData()
     }
     
     func setRefreshController(){
-        refreshController.tintColor = .black
+        refreshController.tintColor = .systemGray6
         refreshController.addTarget(self, action: #selector(requestNewsList), for: .valueChanged)
-        newsTable.addSubview(refreshController)
+        dataView.tableNews.addSubview(refreshController)
     }
 }
-// configure view items for localization
+/// configure view items for localization
 extension HomeViewController {
     private func configureViewsForLocalization(){
-        lblNews.text = NSLocalizedString("news", comment: "")
         lblCategory.text = NSLocalizedString("category", comment: "")
         homeTabBarItem.title = NSLocalizedString("home_title", comment: "") 
         searchBar.placeholder = NSLocalizedString("search_hint", comment: "") 
     }
 }
+
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if !searchText.isEmpty {
@@ -121,35 +118,43 @@ extension HomeViewController: UISearchBarDelegate {
 extension HomeViewController: ICategorySelection {
     func getNewsWithCategory(categoryType: String) {
         print("maamoun")
-        self.newsTable.reloadData()
+        dataView.tableNews.reloadData()
         self.setRefreshController()
         self.requestNewsList(category: categoryType)
     }
     
     func handleError(error: ServiceError) {
         refreshController.endRefreshing()
-       // newsTable.isHidden = true
+        errorView.frame = self.tableStackView.bounds
+        self.tableStackView.addSubview(errorView)
+        errorView.imgError.image = UIImage(named: "errorImg")
         switch (error) {
         case .networkFailure:
-            lblError.text = "No internet connection"
+          errorView.lblError.text = NSLocalizedString("networkFailure", comment: "")
             print("No internet connection")
+            
         case .ClinetError:
-            lblError.text = "Bad request.. please try agian"
+            errorView.lblError.text = NSLocalizedString("ClinetError", comment: "")
             print("Bad request.. please try agian")
+        
         case .ServerError:
-            lblError.text = "Server error.. please try again later"
+            errorView.lblError.text = NSLocalizedString("serverError", comment: "")
             print("Server error.. please try again later")
+        
         case .invalidResponse:
-            lblError.text = "Bad response"
+            errorView.lblError.text = NSLocalizedString("invalidResponse", comment: "")
             print("Bad response")
+        
         case .decodingError:
-            lblError.text = "Error while getting response from the server"
+            errorView.lblError.text = NSLocalizedString("decodingError", comment: "")
             print("Error while getting response from the server")
+        
         case .encodingError:
-            lblError.text = "Error while sending requset to server"
+            errorView.lblError.text = NSLocalizedString("encodingError", comment: "")
             print("Error while sending requset to server")
+        
         case .customError(_):
-            lblError.text = "invaild action"
+            errorView.lblError.text = NSLocalizedString("customError", comment: "")
             print("invaild action")
         }
     }

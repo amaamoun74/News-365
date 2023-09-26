@@ -25,3 +25,10 @@
 "alert_message" = "This action requires application Resert!";
 "ok" = "OK";
 "cancle" = "cancle";
+"networkFailure" = "No internet connection";
+"ClinetError" = "Bad request.. please try agian";
+"serverError" = "Server error.. please try again later";
+"invalidResponse" = "Bad response";
+"decodingError" = "Error while getting response from the server";
+"encodingError" = "Error while sending requset to server";
+"customError" = "invaild action";
