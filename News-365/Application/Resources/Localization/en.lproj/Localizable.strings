@@ -33,3 +33,4 @@
 "encodingError" = "Error while sending requset to server";
 "customError" = "invaild action";
 "select_Country" = "Select a Country";
+"errorMSG" = "There are no data for this country";

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Reachability
+import SVProgressHUD
 
 class HomeViewController: UIViewController {
     
@@ -19,7 +21,6 @@ class HomeViewController: UIViewController {
     private var tableDataSources : NewsDataSources?
     private var collectionDataSource : CategoryDataSource?
     private var categoryList: [Category]?
-    private let refreshController = UIRefreshControl()
     private let errorView = (Bundle.main.loadNibNamed("ErrorDataView", owner: HomeViewController.self, options: nil)?.first as! ErrorDataView)
     private let dataView = Bundle.main.loadNibNamed("NewsDataView", owner: HomeViewController.self, options: nil)?.first as! NewsDataView
     override func viewDidLoad() {
@@ -33,11 +34,11 @@ class HomeViewController: UIViewController {
                         Category(CategoryName: NSLocalizedString("technology", comment: ""), cattegoryImage: "technologyIcon"),
                         Category(CategoryName: NSLocalizedString("sports", comment: ""), cattegoryImage: "sportIcon")]
         configureViewsForLocalization()
-        setRefreshController()
         registerCell()
        
     }
     override func viewWillAppear(_ animated: Bool) {
+        showProgressIndicator()
         requestNewsList()
         bindCategoriesToDataSource()
     }
@@ -57,16 +58,31 @@ class HomeViewController: UIViewController {
 /// request news and send result to data source for displying it
 extension HomeViewController {
     @objc func requestNewsList(category: String = "general"){
-        remoteViewModel.getNews(category: category) { [unowned self] result in
-            switch result {
-            case .success(let response):
-                refreshController.endRefreshing()
-                print (response?.articles?.first?.title ?? "no data")
-                bindNewsToDataSource(newsResponse: response)
-            case .failure(let error):
-                handleError(error: error)
-                print(error.localizedDescription)
+        self.showProgressIndicator()
+        if Reachability.forInternetConnection().isReachable() {
+            remoteViewModel.getNews(category: category) { [unowned self] result in
+                SVProgressHUD.dismiss()
+                switch result {
+                case .success(let response):
+                   
+                    if let titleResponse = response?.articles?.first?.title {
+                        print (titleResponse)
+                        bindNewsToDataSource(newsResponse: response)
+                    }
+                    else {
+                        self.dismissProgressIndicator()
+                        handleError(error: .customError(""))
+                    }
+                case .failure(let error):
+                    self.dismissProgressIndicator()
+                    handleError(error: error)
+                    print(error.localizedDescription)
+                }
             }
+        }
+        else {
+            SVProgressHUD.dismiss()
+            handleError(error: .networkFailure)
         }
     }
     
@@ -81,11 +97,11 @@ extension HomeViewController {
         dataView.tableNews.reloadData()
     }
     
-    func setRefreshController(){
+    /*func setRefreshController(){
         refreshController.tintColor = .systemGray6
         refreshController.addTarget(self, action: #selector(requestNewsList), for: .valueChanged)
         dataView.tableNews.addSubview(refreshController)
-    }
+    }*/
 }
 /// configure view items for localization
 extension HomeViewController {
@@ -103,11 +119,9 @@ extension HomeViewController: UISearchBarDelegate {
             remoteViewModel.searchForNews(titleKeyword: searchText) { [unowned self] result in
                 switch result {
                 case .success(let response):
-                    refreshController.endRefreshing()
                     print (response?.articles?.first?.title ?? "no data")
                     bindNewsToDataSource(newsResponse: response)
                 case .failure(let error):
-                    refreshController.endRefreshing()
                     print(error.localizedDescription)
                 }
             }
@@ -119,43 +133,42 @@ extension HomeViewController: ICategorySelection {
     func getNewsWithCategory(categoryType: String) {
         print("maamoun")
         dataView.tableNews.reloadData()
-        self.setRefreshController()
         self.requestNewsList(category: categoryType)
     }
     
     func handleError(error: ServiceError) {
-        refreshController.endRefreshing()
         errorView.frame = self.tableStackView.bounds
         self.tableStackView.addSubview(errorView)
         errorView.imgError.image = UIImage(named: "errorImg")
         switch (error) {
         case .networkFailure:
-          errorView.lblError.text = NSLocalizedString("networkFailure", comment: "")
+            errorView.lblError.text = NSLocalizedString("networkFailure", comment: "")
             print("No internet connection")
             
         case .ClinetError:
             errorView.lblError.text = NSLocalizedString("ClinetError", comment: "")
             print("Bad request.. please try agian")
-        
+            
         case .ServerError:
             errorView.lblError.text = NSLocalizedString("serverError", comment: "")
             print("Server error.. please try again later")
-        
+            
         case .invalidResponse:
             errorView.lblError.text = NSLocalizedString("invalidResponse", comment: "")
             print("Bad response")
-        
+            
         case .decodingError:
             errorView.lblError.text = NSLocalizedString("decodingError", comment: "")
             print("Error while getting response from the server")
-        
+            
         case .encodingError:
             errorView.lblError.text = NSLocalizedString("encodingError", comment: "")
             print("Error while sending requset to server")
-        
+            
         case .customError(_):
-            errorView.lblError.text = NSLocalizedString("customError", comment: "")
-            print("invaild action")
+            //errorView.lblError.text = NSLocalizedString("customError", comment: "")
+            errorView.lblError.text = NSLocalizedString("errorMSG", comment: "")
+            print("defualt error")
         }
     }
     
@@ -171,5 +184,16 @@ extension HomeViewController: NavigationProtocol {
         else {
             print("nil url")
         }
+    }
+}
+extension HomeViewController: IndicatorProtocol {
+     func showProgressIndicator(){
+        SVProgressHUD.setBackgroundColor(.systemBackground)
+        SVProgressHUD.setForegroundColor(UIColor(named: "secondRed")!)
+        SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.show()
+    }
+     func dismissProgressIndicator(){
+        SVProgressHUD.dismiss()
     }
 }
