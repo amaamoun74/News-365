@@ -16,6 +16,7 @@ target 'News-365' do
       pod 'RxDataSources', '~> 5.0'
       pod 'SkeletonView'
       pod 'ADCountryPicker', '~> 2.1.0'
+      pod 'SVProgressHUD'
 
 
   target 'News-365Tests' do
