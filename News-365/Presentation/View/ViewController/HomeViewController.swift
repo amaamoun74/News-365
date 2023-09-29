@@ -17,15 +17,30 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var homeTabBarItem: UITabBarItem!
     @IBOutlet weak var newsCategory: UICollectionView!
+    
     private var remoteViewModel = RemoteNewsViewModel()
     private var tableDataSources : NewsDataSources?
     private var collectionDataSource : CategoryDataSource?
     private var categoryList: [Category]?
+    private var operationQueu = OperationQueue()
+
     private let errorView = (Bundle.main.loadNibNamed("ErrorDataView", owner: HomeViewController.self, options: nil)?.first as! ErrorDataView)
     private let dataView = Bundle.main.loadNibNamed("NewsDataView", owner: HomeViewController.self, options: nil)?.first as! NewsDataView
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchControler.delegate = self
+        setCategoryList()
+        configureViewsForLocalization()
+        registerCell()
+       
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        showProgressIndicator()
+        setOperationQueue()
+    }
+    func setCategoryList(){
         categoryList = [Category(CategoryName: NSLocalizedString("general", comment: ""), cattegoryImage: "generalIcon"),
                         Category(CategoryName: NSLocalizedString("business", comment: ""), cattegoryImage: "businessIcon"),
                         Category(CategoryName: NSLocalizedString("entertainment", comment: ""), cattegoryImage: "entertainmentIcon"),
@@ -33,19 +48,32 @@ class HomeViewController: UIViewController {
                         Category(CategoryName: NSLocalizedString("science", comment: ""), cattegoryImage: "scienceIcon"),
                         Category(CategoryName: NSLocalizedString("technology", comment: ""), cattegoryImage: "technologyIcon"),
                         Category(CategoryName: NSLocalizedString("sports", comment: ""), cattegoryImage: "sportIcon")]
-        configureViewsForLocalization()
-        registerCell()
-       
     }
-    override func viewWillAppear(_ animated: Bool) {
-        showProgressIndicator()
-        requestNewsList()
-        bindCategoriesToDataSource()
+    
+    func setOperationQueue(){
+        let firstOperation = BlockOperation{
+            OperationQueue.main.addOperation {
+                self.requestNewsList()
+            }
+        }
+        let secondOperation = BlockOperation{
+            OperationQueue.main.addOperation {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {                self.bindCategoriesToDataSource()
+                    }
+                
+            }
+        }
+        secondOperation.addDependency(firstOperation)
+        operationQueu.addOperations([firstOperation,secondOperation], waitUntilFinished: true)
+        operationQueu.cancelAllOperations()
     }
+    
     func registerCell(){
         newsCategory.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "newsCatgeogry")
     }
+    
     func bindCategoriesToDataSource(){
+        lblCategory.text = NSLocalizedString("category", comment: "")
         let categoryViewModel = CategorySectionViewModel(categoryList!)
         self.collectionDataSource = .init(categoryViewModel)
         collectionDataSource?.categorySelection = self
@@ -64,7 +92,6 @@ extension HomeViewController {
                 SVProgressHUD.dismiss()
                 switch result {
                 case .success(let response):
-                   
                     if let titleResponse = response?.articles?.first?.title {
                         print (titleResponse)
                         bindNewsToDataSource(newsResponse: response)
@@ -98,16 +125,15 @@ extension HomeViewController {
     }
     
     /*func setRefreshController(){
-        refreshController.tintColor = .systemGray6
-        refreshController.addTarget(self, action: #selector(requestNewsList), for: .valueChanged)
-        dataView.tableNews.addSubview(refreshController)
-    }*/
+     refreshController.tintColor = .systemGray6
+     refreshController.addTarget(self, action: #selector(requestNewsList), for: .valueChanged)
+     dataView.tableNews.addSubview(refreshController)
+     }*/
 }
 /// configure view items for localization
 extension HomeViewController {
     private func configureViewsForLocalization(){
-        lblCategory.text = NSLocalizedString("category", comment: "")
-        homeTabBarItem.title = NSLocalizedString("home_title", comment: "") 
+        homeTabBarItem.title = NSLocalizedString("home_title", comment: "")
         searchBar.placeholder = NSLocalizedString("search_hint", comment: "") 
     }
 }
