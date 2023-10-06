@@ -15,6 +15,6 @@ class NewsDataView: UIView {
     override public func awakeFromNib() {
         super.awakeFromNib()
         tableNews.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsCell")
-      //  lblNews.text = NSLocalizedString("news", comment: "")
+        newsLbl.text = NSLocalizedString("news", comment: "")
     }
 }

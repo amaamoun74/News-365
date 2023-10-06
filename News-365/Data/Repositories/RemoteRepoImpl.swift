@@ -6,26 +6,29 @@
 //
 
 import Foundation
+import Combine
 class RemoteRepoImpl: RemoteNewsRepoProtocol {
-    
-    
-    let networkManger: NetworkManagerProtocol
+    private let networkManger: NetworkManagerProtocol
     init(networkManger: NetworkManagerProtocol = NetworkManager()) {
         self.networkManger = networkManger
     }
     
     
     
-    func getNews(endPoint: Endpoint, compiltion: @escaping (Result<News?, ServiceError>) -> Void) {
+    func getNews(endPoint: Endpoint, compiltion: @escaping (Result<News?, NetworkError>) -> Void) {
         networkManger.request(endpoint: endPoint, responseClass: News.self) { result in
             compiltion(result)
         }
     }
     
-    func searchNews(keyword: String, compilition: @escaping (Result<News?, ServiceError>) -> Void) {
+    func searchNews(keyword: String, compilition: @escaping (Result<News?, NetworkError>) -> Void) {
         networkManger.request(endpoint: .searchNews(keyword: keyword), responseClass: News.self) { result in
             compilition(result)
         }
-        
     }
+    
+    func getNews(endPoint: Endpoint) -> AnyPublisher<News, NetworkError> {
+        return networkManger.requestData(from: endPoint, responseClass: News.self)
+    }
+    
 }

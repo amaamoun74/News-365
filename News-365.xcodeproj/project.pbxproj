@@ -397,7 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				E2CE9F4B2A952B1300A320E9 /* Local */,
-				E2CE9F4A2A952B0600A320E9 /* Networking */,
+				E2CE9F4A2A952B0600A320E9 /* Remote */,
 				E2CE9F492A952AEF00A320E9 /* Repositories */,
 			);
 			path = Data;
@@ -453,7 +453,7 @@
 			path = Repositories;
 			sourceTree = "<group>";
 		};
-		E2CE9F4A2A952B0600A320E9 /* Networking */ = {
+		E2CE9F4A2A952B0600A320E9 /* Remote */ = {
 			isa = PBXGroup;
 			children = (
 				E2B8479C2A9777E700A31359 /* HTTP.swift */,
@@ -461,7 +461,7 @@
 				E2B847A02A97780B00A31359 /* NetworkError.swift */,
 				E2B847A22A97782000A31359 /* NetworkManager.swift */,
 			);
-			path = Networking;
+			path = Remote;
 			sourceTree = "<group>";
 		};
 		E2CE9F4B2A952B1300A320E9 /* Local */ = {
