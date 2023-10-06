@@ -6,7 +6,11 @@
 //
 
 import Foundation
+import Combine
+
 protocol RemoteNewsRepoProtocol {
-    func getNews(endPoint: Endpoint, compiltion: @escaping (Result<News?, ServiceError>) -> Void)
-    func searchNews(keyword: String, compilition: @escaping (Result<News?, ServiceError>) -> Void)
+    func getNews(endPoint: Endpoint, compiltion: @escaping (Result<News?, NetworkError>) -> Void)
+    func searchNews(keyword: String, compilition: @escaping (Result<News?, NetworkError>) -> Void)
+    func getNews(endPoint: Endpoint) -> AnyPublisher<News, NetworkError>
+
 }

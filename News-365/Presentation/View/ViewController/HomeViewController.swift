@@ -8,6 +8,7 @@
 import UIKit
 import Reachability
 import SVProgressHUD
+import Combine
 
 class HomeViewController: UIViewController {
     
@@ -17,13 +18,13 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var homeTabBarItem: UITabBarItem!
     @IBOutlet weak var newsCategory: UICollectionView!
-    
+    private var viewModel: RemoteNewsViewModel?
     private var remoteViewModel = RemoteNewsViewModel()
     private var tableDataSources : NewsDataSources?
     private var collectionDataSource : CategoryDataSource?
     private var categoryList: [Category]?
     private var operationQueu = OperationQueue()
-
+    private var cancellables: Set<AnyCancellable> = []
     private let errorView = (Bundle.main.loadNibNamed("ErrorDataView", owner: HomeViewController.self, options: nil)?.first as! ErrorDataView)
     private let dataView = Bundle.main.loadNibNamed("NewsDataView", owner: HomeViewController.self, options: nil)?.first as! NewsDataView
     
@@ -34,12 +35,13 @@ class HomeViewController: UIViewController {
         setCategoryList()
         configureViewsForLocalization()
         registerCell()
-       
+        setupViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         showProgressIndicator()
         setOperationQueue()
     }
+    
     func setCategoryList(){
         categoryList = [Category(CategoryName: NSLocalizedString("general", comment: ""), cattegoryImage: "generalIcon"),
                         Category(CategoryName: NSLocalizedString("business", comment: ""), cattegoryImage: "businessIcon"),
@@ -53,14 +55,13 @@ class HomeViewController: UIViewController {
     func setOperationQueue(){
         let firstOperation = BlockOperation{
             OperationQueue.main.addOperation {
-                self.requestNewsList()
+                self.requestNews()
             }
         }
         let secondOperation = BlockOperation{
             OperationQueue.main.addOperation {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {                self.bindCategoriesToDataSource()
                     }
-                
             }
         }
         secondOperation.addDependency(firstOperation)
@@ -85,32 +86,39 @@ class HomeViewController: UIViewController {
 
 /// request news and send result to data source for displying it
 extension HomeViewController {
-    @objc func requestNewsList(category: String = "general"){
+    private func setupViewModel(){
+        viewModel = RemoteNewsViewModel()
+    }
+    
+    private func requestNews(category: String = "general") {
         self.showProgressIndicator()
-        if Reachability.forInternetConnection().isReachable() {
-            remoteViewModel.getNews(category: category) { [unowned self] result in
-                SVProgressHUD.dismiss()
-                switch result {
-                case .success(let response):
-                    if let titleResponse = response?.articles?.first?.title {
-                        print (titleResponse)
-                        bindNewsToDataSource(newsResponse: response)
-                    }
-                    else {
-                        self.dismissProgressIndicator()
-                        handleError(error: .customError(""))
-                    }
-                case .failure(let error):
-                    self.dismissProgressIndicator()
-                    handleError(error: error)
-                    print(error.localizedDescription)
+        viewModel?.fetchNews(category: category)
+        viewModel?.$news
+            .receive(on: DispatchQueue.main)
+            //.compactMap{ $0 }
+            .sink { [weak self] newsResponse in
+                //     dump("title \(String(describing: newsResponse.articles?.first?.title))")
+                guard newsResponse.articles != nil else {
+                    self?.showProgressIndicator()
+                    return
                 }
+                //self?.bindNewsToDataSource(newsResponse: newsResponse)
+                if newsResponse.articles != nil && newsResponse.articles?.count ?? -1 > 0    {
+                    self?.bindNewsToDataSource(newsResponse: newsResponse)
+                }
+                else {
+                    //self?.handleError(errorMSG: NSLocalizedString("errorMSG", comment: ""))
+                    self?.viewModel?.$errorMessage
+                        .receive(on: RunLoop.main)
+                        .sink { [weak self] errorMessage in
+                            self?.handleError(errorMSG: errorMessage)
+                        }
+                        .store(in: &self!.cancellables)
+                }
+                
             }
-        }
-        else {
-            SVProgressHUD.dismiss()
-            handleError(error: .networkFailure)
-        }
+            .store(in: &cancellables)
+
     }
     
     func bindNewsToDataSource(newsResponse response: News?){
@@ -122,6 +130,7 @@ extension HomeViewController {
         dataView.tableNews.delegate = tableDataSources
         dataView.tableNews.dataSource = tableDataSources
         dataView.tableNews.reloadData()
+        self.dismissProgressIndicator()
     }
     
     /*func setRefreshController(){
@@ -158,46 +167,18 @@ extension HomeViewController: UISearchBarDelegate {
 extension HomeViewController: ICategorySelection {
     func getNewsWithCategory(categoryType: String) {
         print("maamoun")
+        showProgressIndicator()
         dataView.tableNews.reloadData()
-        self.requestNewsList(category: categoryType)
+        self.requestNews(category: categoryType)
     }
     
-    func handleError(error: ServiceError) {
+    func handleError(errorMSG: String) {
+        self.dismissProgressIndicator()
         errorView.frame = self.tableStackView.bounds
         self.tableStackView.addSubview(errorView)
         errorView.imgError.image = UIImage(named: "errorImg")
-        switch (error) {
-        case .networkFailure:
-            errorView.lblError.text = NSLocalizedString("networkFailure", comment: "")
-            print("No internet connection")
-            
-        case .ClinetError:
-            errorView.lblError.text = NSLocalizedString("ClinetError", comment: "")
-            print("Bad request.. please try agian")
-            
-        case .ServerError:
-            errorView.lblError.text = NSLocalizedString("serverError", comment: "")
-            print("Server error.. please try again later")
-            
-        case .invalidResponse:
-            errorView.lblError.text = NSLocalizedString("invalidResponse", comment: "")
-            print("Bad response")
-            
-        case .decodingError:
-            errorView.lblError.text = NSLocalizedString("decodingError", comment: "")
-            print("Error while getting response from the server")
-            
-        case .encodingError:
-            errorView.lblError.text = NSLocalizedString("encodingError", comment: "")
-            print("Error while sending requset to server")
-            
-        case .customError(_):
-            //errorView.lblError.text = NSLocalizedString("customError", comment: "")
-            errorView.lblError.text = NSLocalizedString("errorMSG", comment: "")
-            print("defualt error")
-        }
+        errorView.lblError.text = errorMSG
     }
-    
 }
 extension HomeViewController: NavigationProtocol {
     func navigateToWebView(articalURL: String?) {
